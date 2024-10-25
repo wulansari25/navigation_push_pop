@@ -11,7 +11,7 @@ class RegisterScreen extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.transparent,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios, color: Color(0xFF4E7D96)),
+          icon: const Icon(Icons.arrow_back_ios, color: Color(0xFFD4AF37)),
           onPressed: () => Navigator.pop(context),
         ),
       ),
@@ -29,7 +29,7 @@ class RegisterScreen extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFF4E7D96),
+                  color: Color(0xFFD4AF37),
                 ),
               ),
               const SizedBox(height: 8),
@@ -46,7 +46,7 @@ class RegisterScreen extends StatelessWidget {
               TextField(
                 decoration: InputDecoration(
                   hintText: 'Full Name',
-                  prefixIcon: const Icon(Icons.person_outline, color: Color(0xFF4E7D96)),
+                  prefixIcon: const Icon(Icons.person_outline, color: Color(0xFFD4AF37)),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
                     borderSide: BorderSide.none,
@@ -59,7 +59,7 @@ class RegisterScreen extends StatelessWidget {
               TextField(
                 decoration: InputDecoration(
                   hintText: 'Email',
-                  prefixIcon: const Icon(Icons.email_outlined, color: Color(0xFF4E7D96)),
+                  prefixIcon: const Icon(Icons.email_outlined, color: Color(0xFFD4AF37)),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
                     borderSide: BorderSide.none,
@@ -73,7 +73,7 @@ class RegisterScreen extends StatelessWidget {
                 obscureText: true,
                 decoration: InputDecoration(
                   hintText: 'Password',
-                  prefixIcon: const Icon(Icons.lock_outline, color: Color(0xFF4E7D96)),
+                  prefixIcon: const Icon(Icons.lock_outline, color: Color(0xFFD4AF37)),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
                     borderSide: BorderSide.none,
@@ -87,7 +87,7 @@ class RegisterScreen extends StatelessWidget {
                 obscureText: true,
                 decoration: InputDecoration(
                   hintText: 'Confirm Password',
-                  prefixIcon: const Icon(Icons.lock_outline, color: Color(0xFF4E7D96)),
+                  prefixIcon: const Icon(Icons.lock_outline, color: Color(0xFFD4AF37)),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
                     borderSide: BorderSide.none,

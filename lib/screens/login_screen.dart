@@ -8,19 +8,16 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  // Buat TextEditingController untuk mengontrol input
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  // Fungsi untuk auto-fill (biar tidak ngetik untuk login,hanya untuk demo ya gais yaa)
   void _autoFillLogin() {
-    _emailController.text = "user@example.com"; // Email default (ganti terserah anda wak)
-    _passwordController.text = "password123"; // Password default
+    _emailController.text = "user@example.com";
+    _passwordController.text = "password123";
   }
 
   @override
   void dispose() {
-    // Bersihkan controller ketika widget di dispose
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
@@ -37,21 +34,19 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SizedBox(height: 50),
-              // Logo atau Ilustrasi
               const Icon(
-                Icons.lock_outlined,
+                Icons.security_rounded,
                 size: 100,
-                color: Color(0xFF4E7D96),
+                color: Color(0xFFD4AF37), // Warna emas
               ),
               const SizedBox(height: 30),
-              // Welcome Text
               const Text(
                 'Welcome Back!',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFF4E7D96),
+                  color: Color(0xFF1A1A2E), // Warna dark blue
                 ),
               ),
               const SizedBox(height: 8),
@@ -64,62 +59,91 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               const SizedBox(height: 50),
-              // Form Fields
-              TextField(
-                controller: _emailController, // Tambahkan controller
-                decoration: InputDecoration(
-                  hintText: 'Email',
-                  prefixIcon: const Icon(Icons.email_outlined, color: Color(0xFF4E7D96)),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
-                    borderSide: BorderSide.none,
-                  ),
-                  filled: true,
-                  fillColor: Colors.grey[100],
-                  // Tambahkan suffix icon untuk clear text
-                  suffixIcon: IconButton(
-                    icon: const Icon(Icons.clear),
-                    onPressed: () => _emailController.clear(),
+              
+              // Bungkus TextField dalam Container untuk menambahkan boxShadow
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  borderRadius: BorderRadius.circular(30),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Colors.black26,
+                      blurRadius: 10,
+                      offset: Offset(2, 4),
+                    ),
+                  ],
+                ),
+                child: TextField(
+                  controller: _emailController,
+                  decoration: InputDecoration(
+                    hintText: 'Email',
+                    prefixIcon: const Icon(Icons.alternate_email_rounded, color: Color(0xFFD4AF37)),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                      borderSide: BorderSide.none,
+                    ),
+                    filled: true,
+                    fillColor: Colors.transparent,
+                    suffixIcon: IconButton(
+                      icon: const Icon(Icons.clear),
+                      onPressed: () => _emailController.clear(),
+                    ),
                   ),
                 ),
               ),
               const SizedBox(height: 16),
-              TextField(
-                controller: _passwordController, // Tambahkan controller
-                obscureText: true,
-                decoration: InputDecoration(
-                  hintText: 'Password',
-                  prefixIcon: const Icon(Icons.lock_outline, color: Color(0xFF4E7D96)),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
-                    borderSide: BorderSide.none,
-                  ),
-                  filled: true,
-                  fillColor: Colors.grey[100],
-                  // Tambahkan suffix icon untuk clear text
-                  suffixIcon: IconButton(
-                    icon: const Icon(Icons.clear),
-                    onPressed: () => _passwordController.clear(),
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  borderRadius: BorderRadius.circular(30),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Colors.black26,
+                      blurRadius: 10,
+                      offset: Offset(2, 4),
+                    ),
+                  ],
+                ),
+                child: TextField(
+                  controller: _passwordController,
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    hintText: 'Password',
+                    prefixIcon: const Icon(Icons.lock_rounded, color: Color(0xFFD4AF37)),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                      borderSide: BorderSide.none,
+                    ),
+                    filled: true,
+                    fillColor: Colors.transparent,
+                    suffixIcon: IconButton(
+                      icon: const Icon(Icons.clear),
+                      onPressed: () => _passwordController.clear(),
+                    ),
                   ),
                 ),
               ),
               const SizedBox(height: 24),
-              // Auto-fill Button
               TextButton(
                 onPressed: _autoFillLogin,
                 child: const Text(
                   'Auto Fill Login',
                   style: TextStyle(
-                    color: Color(0xFF4E7D96),
+                    color: Color(0xFF1A1A2E),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-              // Login Button
               ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFFD4AF37), // Warna emas
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                ),
                 onPressed: () {
-                  // Cek kredensial sebelum navigasi
-                  if (_emailController.text.isNotEmpty && 
+                  if (_emailController.text.isNotEmpty &&
                       _passwordController.text.isNotEmpty) {
                     Navigator.pushNamedAndRemoveUntil(
                       context,
@@ -127,7 +151,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       (route) => false,
                     );
                   } else {
-                    // Tampilkan pesan error jika form kosong 
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
                         content: Text('Please fill in all fields'),
@@ -138,11 +161,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 },
                 child: const Text(
                   'Login',
-                  style: TextStyle(fontSize: 16),
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
                 ),
               ),
               const SizedBox(height: 16),
-              // Register Link
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -157,7 +183,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: const Text(
                       'Register',
                       style: TextStyle(
-                        color: Color(0xFF4E7D96),
+                        color: Color(0xFF1A1A2E),
                         fontWeight: FontWeight.bold,
                       ),
                     ),

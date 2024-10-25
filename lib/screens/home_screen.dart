@@ -11,14 +11,14 @@ class HomeScreen extends StatelessWidget {
           'Home',
           style: TextStyle(color: Colors.white),
         ),
-        backgroundColor: const Color(0xFF4E7D96),
+        backgroundColor: const Color(0xFFD4AF37),
         actions: [
           IconButton(
             icon: const Icon(Icons.logout, color: Colors.white),
             onPressed: () {
               // Kembali ke halaman login
               Navigator.pushNamedAndRemoveUntil(
-                context, 
+                context,
                 '/login',
                 (route) => false,
               );
@@ -39,7 +39,7 @@ class HomeScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
-                    colors: [Color(0xFF4E7D96), Color(0xFF6A9BB2)],
+                    colors: [Color(0xFFD4AF37), Color(0xFFD4AF37)],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                   ),
@@ -93,24 +93,28 @@ class HomeScreen extends StatelessWidget {
                   mainAxisSpacing: 20,
                   children: [
                     _buildMenuCard(
-                      icon: Icons.person,
+                      icon: Icons.account_circle_rounded,
                       title: 'Profile',
                       onTap: () {},
+                      color: const Color(0xFFD4AF37), // Warna emas
                     ),
                     _buildMenuCard(
-                      icon: Icons.settings,
+                      icon: Icons.settings_rounded,
                       title: 'Settings',
                       onTap: () {},
+                      color: const Color(0xFFD4AF37), // Warna emas
                     ),
                     _buildMenuCard(
-                      icon: Icons.notifications,
+                      icon: Icons.notifications_active_rounded,
                       title: 'Notifications',
                       onTap: () {},
+                      color: const Color(0xFFD4AF37), // Warna emas
                     ),
                     _buildMenuCard(
-                      icon: Icons.help,
+                      icon: Icons.help_center_rounded,
                       title: 'Help',
                       onTap: () {},
+                      color: const Color(0xFFD4AF37), // Warna emas
                     ),
                   ],
                 ),
@@ -126,6 +130,7 @@ class HomeScreen extends StatelessWidget {
     required IconData icon,
     required String title,
     required VoidCallback onTap,
+    required Color color, // Tambahkan parameter untuk warna ikon
   }) {
     return GestureDetector(
       onTap: onTap,
@@ -148,7 +153,7 @@ class HomeScreen extends StatelessWidget {
             Icon(
               icon,
               size: 40,
-              color: const Color(0xFF4E7D96),
+              color: color, // Gunakan warna emas di sini
             ),
             const SizedBox(height: 12),
             Text(
@@ -156,7 +161,7 @@ class HomeScreen extends StatelessWidget {
               style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
-                color: Color(0xFF4E7D96),
+                color: Color.fromARGB(255, 128, 147, 158),
               ),
             ),
           ],
